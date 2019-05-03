@@ -1,6 +1,6 @@
 {
   "name": "octotree",
-  "version": "3.0.7",
+  "version": "4.0.0",
   "description": "Code tree for GitHub",
   "scripts": {
     "start": "gulp",
@@ -48,6 +48,7 @@
     "jpm": "^1.0.4",
     "map-stream": "*",
     "mocha": "2.0.1",
+    "natives": "^1.1.6",
     "request": "^2.88.0",
     "selenium-webdriver": "2.44.0",
     "starx": "~0.1.7",

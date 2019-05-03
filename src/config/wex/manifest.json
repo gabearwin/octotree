@@ -9,7 +9,7 @@
   "icons": {
     "128": "icons/icon128.png"
   },
-  "permissions": ["https://api.github.com/*", "storage"],
+  "permissions": ["https://api.github.com/*", "https://github.corp.ebay.com/*", "storage"],
   "optional_permissions": ["<all_urls>"],
   "web_accessible_resources": ["*.woff2", "*.png", "*.gif"],
   "background": {
@@ -19,7 +19,7 @@
   "content_scripts": [
     {
       "run_at": "document_start",
-      "matches": ["https://github.com/*"],
+      "matches": ["https://github.com/*", "https://github.corp.ebay.com/*"],
       "js": ["content.js"],
       "css": ["content.css"]
     }

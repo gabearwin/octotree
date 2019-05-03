@@ -1,6 +1,18 @@
 $(document).ready(() => {
   loadExtension();
 
+  function createAdapter() {
+    const githubUrls = ["https://github.com"];
+    const ebayUrls = ['https://github.corp.ebay.com'];
+    const currentUrl = `${location.protocol}//${location.host}`;
+
+    if (~githubUrls.indexOf(currentUrl)) {
+      return new GitHub(store);
+    } else if (~ebayUrls.indexOf(currentUrl)) {
+      return new Ebay(store);
+    }
+  }
+
   async function loadExtension() {
     const $html = $('html');
     const $document = $(document);
@@ -10,7 +22,7 @@ $(document).ready(() => {
     const $views = $sidebar.find('.octotree-view');
     const $spinner = $sidebar.find('.octotree-spin');
     const $pinner = $sidebar.find('.octotree-pin');
-    const adapter = new GitHub(store);
+    const adapter = createAdapter();
     const treeView = new TreeView($dom, store, adapter);
     const optsView = new OptionsView($dom, store, adapter);
     const helpPopup = new HelpPopup($dom, store);
