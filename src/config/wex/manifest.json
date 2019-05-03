@@ -1,7 +1,7 @@
 {
   "name": "Octotree",
   "version": "$VERSION",
-  "description": "GitHub code tree on steroids",
+  "description": "Code tree for Github, Gitee, Github.corp",
   "homepage_url": "https://www.octotree.io",
   "author": "Buu Nguyen",
   "manifest_version": 2,
@@ -9,7 +9,7 @@
   "icons": {
     "128": "icons/icon128.png"
   },
-  "permissions": ["https://api.github.com/*", "https://github.corp.ebay.com/*", "storage"],
+  "permissions": ["https://api.github.com/*", "https://github.corp.ebay.com/*", "https://assets.gitee.com/*", "storage"],
   "optional_permissions": ["<all_urls>"],
   "web_accessible_resources": ["*.woff2", "*.png", "*.gif"],
   "background": {
@@ -19,7 +19,7 @@
   "content_scripts": [
     {
       "run_at": "document_start",
-      "matches": ["https://github.com/*", "https://github.corp.ebay.com/*"],
+      "matches": ["https://github.com/*", "https://github.corp.ebay.com/*", "https://gitee.com/*"],
       "js": ["content.js"],
       "css": ["content.css"]
     }

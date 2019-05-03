@@ -4,12 +4,15 @@ $(document).ready(() => {
   function createAdapter() {
     const githubUrls = ["https://github.com"];
     const ebayUrls = ['https://github.corp.ebay.com'];
+    const oschinaUrls = ["https://gitee.com"];
     const currentUrl = `${location.protocol}//${location.host}`;
 
     if (~githubUrls.indexOf(currentUrl)) {
       return new GitHub(store);
     } else if (~ebayUrls.indexOf(currentUrl)) {
       return new Ebay(store);
+    } else if (~oschinaUrls.indexOf(currentUrl)) {
+      return new Oschina(store);
     }
   }
 

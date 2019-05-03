@@ -168,6 +168,7 @@ function buildJs(prefix = '.', ctx = {}) {
     `${prefix}/src/adapters/pjax.js`,
     `${prefix}/src/adapters/github.js`,
     `${prefix}/src/adapters/ebay.js`,
+    `${prefix}/src/adapters/oschina.js`,
     `${prefix}/src/view.help.js`,
     `${prefix}/src/view.error.js`,
     `${prefix}/src/view.tree.js`,
