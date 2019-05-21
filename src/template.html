@@ -1,12 +1,12 @@
 <div>
   <nav class="octotree-sidebar">
     <div class="octotree-toggle">
-      <i class="octotree-toggle-icon" role="button"></i> <span>Octotree</span>
+      <i class="octotree-toggle-icon" role="button"></i> <span>CodeTree</span>
 
       <div class="popup">
         <div class="arrow"></div>
         <div class="content">
-          Hi there, this is Octotree. Move mouse over this button to display the code tree. You can also press the
+          Hi there, this is CodeTree. Move mouse over this button to display the code tree. You can also press the
           shortkey <kbd>cmd shift s</kbd> (or <kbd>ctrl shift s</kbd>).
         </div>
       </div>
@@ -79,6 +79,16 @@
             />
           </div>
 
+          <!-- @ifdef SUPPORT_GHE -->
+          <div class="octotree_github_only">
+            <div>
+              <label>GitHub Enterprise URLs</label>
+            </div>
+            <textarea data-store="GHEURLS" placeholder="https://github.mysite1.com__SPACES__https://github.mysite2.com">
+            </textarea>
+          </div>
+          <!-- @endif -->
+
           <div>
             <label><input type="checkbox" data-store="HOVEROPEN" /> Open sidebar on hover</label>
           </div>
@@ -101,7 +111,7 @@
           <div><button class="btn btn-primary">Apply settings</button></div>
         </form>
 
-        <div class="octotree-ad-big">
+        <!--<div class="octotree-ad-big">
           <div>Want these awesome stuff?</div>
           <ul>
             <li>Dark mode</li>
@@ -116,15 +126,14 @@
               <i class="octotree-icon-github"></i>Learn more on our website
             </a>
           </div>
-        </div>
+        </div>-->
       </div>
     </div>
 
     <div class="octotree-footer">
       <div class="octotree-ad-small">
-        <a href="https://www.octotree.io/?utm_source=lite&utm_medium=extension" target="_blank"
-          >Upgrade to Octotree Pro</a
-        >
+        <!--<a href="https://www.octotree.io/?utm_source=lite&utm_medium=extension" target="_blank">Upgrade to Octotree Pro</a>-->
+        <span>Based on Octotree development</span>
       </div>
     </div>
   </nav>

@@ -15,7 +15,8 @@ const STORE = {
   WIDTH: 'octotree.sidebar_width',
   SHOWN: 'octotree.sidebar_shown',
   PINNED: 'octotree.sidebar_pinned',
-  HUGE_REPOS: 'octotree.huge_repos'
+  HUGE_REPOS: 'octotree.huge_repos',
+  GHEURLS: 'octotree.gheurls.shared'
 };
 
 const DEFAULTS = {
@@ -30,7 +31,8 @@ const DEFAULTS = {
   WIDTH: 232,
   SHOWN: false,
   PINNED: false,
-  HUGE_REPOS: {}
+  HUGE_REPOS: {},
+  GHEURLS: ''
 };
 
 const EVENT = {

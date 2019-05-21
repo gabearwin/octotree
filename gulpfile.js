@@ -55,8 +55,13 @@ gulp.task('lib:ondemand', (cb) => {
 });
 
 // WebExtensions
-gulp.task('wex:template', () => buildTemplate());
-gulp.task('wex:js:ext', ['wex:template', 'lib:ondemand'], () => buildJs());
+gulp.task('wex:template', () => {
+  return buildTemplate('.', {SUPPORT_GHE: true});
+});
+
+gulp.task('wex:js:ext', ['wex:template', 'lib:ondemand'], () => {
+  return buildJs('.', {SUPPORT_GHE: true});
+});
 
 gulp.task('wex:js', ['wex:js:ext'], () => {
   const src = [
@@ -167,7 +172,6 @@ function buildJs(prefix = '.', ctx = {}) {
     `${prefix}/src/adapters/adapter.js`,
     `${prefix}/src/adapters/pjax.js`,
     `${prefix}/src/adapters/github.js`,
-    `${prefix}/src/adapters/ebay.js`,
     `${prefix}/src/adapters/oschina.js`,
     `${prefix}/src/view.help.js`,
     `${prefix}/src/view.error.js`,

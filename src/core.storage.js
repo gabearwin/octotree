@@ -40,5 +40,30 @@ class Storage {
   }
 }
 
+// overwrite Storage's set and get when the key ends with '.shared'
+(() => {
+  const oldSet = Storage.prototype.set;
+  Storage.prototype.set = function (key, val, cb) {
+    // console.log("in storage call set, key is:" + key, "|value is:" + val);
+    this._cache = this._cache || {};
+    this._cache[key] = val;
+
+    const shared = ~key.indexOf('.shared');
+    if (shared) chrome.storage.local.set({[key]: val}, cb || Function());
+    else oldSet.call(this, key, val, cb);
+  };
+
+  const oldGet = Storage.prototype.get;
+  Storage.prototype.get = function (key, cb) {
+    // console.log("in storage call get, key is:" + key);
+    this._cache = this._cache || {};
+    if (!cb) return this._cache[key];
+
+    const shared = ~key.indexOf('.shared');
+    if (shared) chrome.storage.local.get(key, (item) => cb(item[key]));
+    else oldGet.call(this, key, cb);
+  };
+})();
+
 const store = Storage.create(STORE, DEFAULTS);
 window.store = store;

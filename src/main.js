@@ -2,15 +2,18 @@ $(document).ready(() => {
   loadExtension();
 
   function createAdapter() {
-    const githubUrls = ["https://github.com"];
-    const ebayUrls = ['https://github.corp.ebay.com'];
-    const oschinaUrls = ["https://gitee.com"];
+    const normalizeUrl = (url) => url.replace(/(.*?:\/\/[^/]+)(.*)/, '$1');
     const currentUrl = `${location.protocol}//${location.host}`;
+    // console.log("Get enterprise urls is:" + store.get(STORE.GHEURLS));
+    const githubUrls = (store.get(STORE.GHEURLS) || "")
+      .split(/\n/)
+      .map(normalizeUrl)
+      .concat('https://github.com');
+    // console.log("CurrentUrl is:" + currentUrl + "[and] githubUrl is:" + githubUrls);
+    const oschinaUrls = ["https://gitee.com"];
 
     if (~githubUrls.indexOf(currentUrl)) {
       return new GitHub(store);
-    } else if (~ebayUrls.indexOf(currentUrl)) {
-      return new Ebay(store);
     } else if (~oschinaUrls.indexOf(currentUrl)) {
       return new Oschina(store);
     }
@@ -45,7 +48,7 @@ $(document).ready(() => {
 
     for (const view of [treeView, errorView, optsView]) {
       $(view)
-        .on(EVENT.VIEW_READY, function(event) {
+        .on(EVENT.VIEW_READY, function (event) {
           if (this !== optsView) {
             $document.trigger(EVENT.REQ_END);
           }
